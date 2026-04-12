@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+  }
+  html { 
+    scroll-behavior: smooth; 
+    scroll-padding-top: 80px; 
+  }
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-premium-800 to-premium-600;
+  }
+  .accent-gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#b3a18a] to-[#867660];
+  }
+  .glass-nav {
+    @apply bg-premium-50/80 backdrop-blur-md border-b border-premium-200/50;
+  }
+  .glass-card {
+    @apply bg-white/60 backdrop-blur-sm border border-premium-200/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300;
+  }
+  .premium-button {
+    @apply px-6 py-3 rounded-full bg-premium-900 text-premium-50 font-medium hover:bg-premium-800 transition-all duration-300 shadow-[0_4px_14px_0_rgb(24,24,27,0.39)] hover:shadow-[0_6px_20px_rgba(24,24,27,0.23)] hover:-translate-y-0.5;
+  }
+  .premium-button-outline {
+    @apply px-6 py-3 rounded-full border border-premium-200 text-premium-900 font-medium hover:border-premium-900 hover:bg-premium-900 hover:text-white transition-all duration-300;
+  }
+}
