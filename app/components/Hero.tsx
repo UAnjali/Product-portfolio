@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 import { ArrowDown, Linkedin, Mail, Phone } from "lucide-react";
+import profilePic from "../../public/profile.jpg";
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -96,10 +97,8 @@ export default function Hero() {
             >
               <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-72 lg:h-72 rounded-[2.5rem] lg:rounded-[3.5rem] overflow-hidden border-2 border-accent/20 shadow-[0_20px_50px_rgba(17,94,89,0.15)] bg-premium-100">
                 <Image 
-                  src="/profile.jpg" 
+                  src={profilePic} 
                   alt="Anjali Grover" 
-                  width={400} 
-                  height={400} 
                   className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-1000 scale-105 hover:scale-100"
                   priority
                 />
