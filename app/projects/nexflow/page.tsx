@@ -15,7 +15,7 @@ export default function NexFlowPRDPage() {
             <span className="text-sm font-bold uppercase tracking-widest">Back to Portfolio</span>
           </Link>
           <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-premium-400">
-            Internal PRD &bull; Confidential &bull; v1.4.0
+            Internal PRD &bull; Confidential &bull; v1.5.0
           </div>
         </div>
       </nav>
@@ -235,6 +235,25 @@ export default function NexFlowPRDPage() {
                     </div>
                  </div>
               </div>
+           </div>
+        </div>
+      </section>
+
+      {/* Feedback & Governance */}
+      <section className="py-24 max-w-5xl mx-auto px-6 border-t border-premium-100">
+        <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-accent mb-12">05. Feedback & Iterative Governance</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+           <div className="p-8 rounded-3xl bg-premium-50 border border-premium-100">
+              <h4 className="text-sm font-bold text-premium-900 mb-4 italic">Qualitative Feedback Loop</h4>
+              <p className="text-xs text-premium-500 leading-relaxed italic">
+                Bi-weekly syncs with HR Ops Lead and Head of IT to identify Friction Hotspots. We use these sessions to re-prioritize the P1/P2 backlog based on real organizational bottlenecks.
+              </p>
+           </div>
+           <div className="p-8 rounded-3xl bg-premium-50 border border-premium-100">
+              <h4 className="text-sm font-bold text-premium-900 mb-4 italic">Quantitative Tracking</h4>
+              <p className="text-xs text-premium-500 leading-relaxed italic">
+                Heatmap analysis on the Policy Helper chat interface to see which HR policies are most confusing. If a policy is searched frequently, we trigger a Policy Refresh task for HR.
+              </p>
            </div>
         </div>
       </section>
