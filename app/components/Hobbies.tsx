@@ -4,21 +4,19 @@ import { motion } from "framer-motion";
 import { Music, Guitar, Volleyball, Trophy } from "lucide-react";
 
 const hobbies = [
-  { name: "Guitar", desc: "Strumming chords & learning new songs", icon: Guitar },
-  { name: "Music", desc: "Always something playing in the background", icon: Music },
-  { name: "Badminton", desc: "Competitive rallies & weekend matches", icon: Volleyball },
-  { name: "Cricket", desc: "Nothing beats a good game of cricket", icon: Trophy },
+  { name: "Resin Artist", desc: "Creating aesthetic, intricate art pieces from epoxy resin.", icon: Trophy },
+  { name: "Music Lover", desc: "Piano playing and curating diverse playlists.", icon: Music },
 ];
 
 export default function Hobbies() {
   return (
-    <section id="hobbies" className="py-16 md:py-24 bg-premium-100/20">
+    <section id="hobbies" className="py-12 md:py-16 bg-premium-100/20">
       <div className="max-w-6xl mx-auto px-6 sm:px-8">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16 md:mb-20 text-center">
-          <h2 className="text-4xl md:text-5xl font-serif font-semibold text-premium-900 mb-4 tracking-tight">Beyond Code</h2>
-          <p className="text-lg text-premium-500 font-light tracking-wide max-w-2xl mx-auto">What I do when I&apos;m not training models.</p>
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10 md:mb-12 text-center">
+          <h2 className="text-4xl md:text-5xl font-serif font-semibold text-premium-900 mb-4 tracking-tight">The Personal Side</h2>
+          <p className="text-lg text-premium-500 font-light tracking-wide max-w-2xl mx-auto">What I do when I&apos;m not managing products.</p>
         </motion.div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 max-w-2xl mx-auto">
           {hobbies.map((h, i) => {
             const Icon = h.icon;
             return (

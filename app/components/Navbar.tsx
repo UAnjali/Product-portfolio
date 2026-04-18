@@ -8,7 +8,6 @@ const sections = [
   { id: "home", label: "Home" },
   { id: "experience", label: "Experience" },
   { id: "projects", label: "Projects" },
-  { id: "consulting", label: "Consulting & Freelance" },
   { id: "skills", label: "Skills" },
   { id: "education", label: "Education" },
   { id: "hobbies", label: "Hobbies" },

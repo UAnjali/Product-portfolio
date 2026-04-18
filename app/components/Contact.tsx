@@ -5,10 +5,9 @@ import { motion } from "framer-motion";
 import { Mail, Linkedin, Github, Phone, ArrowUpRight, Copy, CheckCircle } from "lucide-react";
 
 const links = [
-  { label: "Email", value: "dhruvgrover1024@gmail.com", href: "mailto:dhruvgrover1024@gmail.com", icon: Mail },
-  { label: "Phone", value: "+91 8689033775", href: "tel:+918689033775", icon: Phone },
-  { label: "LinkedIn", value: "dhruv-grover", href: "https://linkedin.com/in/dhruv-grover-8329481a1/", icon: Linkedin },
-  { label: "GitHub", value: "dhruvgrover1251", href: "https://github.com/dhruvgrover1251", icon: Github },
+  { label: "Email", value: "anjali741998@gmail.com", href: "mailto:anjali741998@gmail.com", icon: Mail },
+  { label: "Phone", value: "+91 9034953969", href: "tel:+919034953969", icon: Phone },
+  { label: "LinkedIn", value: "anjali-grover", href: "https://linkedin.com/in/anjali-grover-130394111", icon: Linkedin },
 ];
 
 function ContactLink({ l, index }: { l: any; index: number }) {
@@ -60,13 +59,13 @@ function ContactLink({ l, index }: { l: any; index: number }) {
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-16 md:py-24">
+    <section id="contact" className="py-12 md:py-16">
       <div className="max-w-4xl mx-auto px-6 sm:px-8">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16 md:mb-20">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-semibold text-premium-900 mb-6 tracking-tight">
-            Let&apos;s Build Something <span className="accent-gradient-text italic">Together</span>
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12 md:mb-16">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-semibold text-premium-900 mb-6 tracking-tight overflow-visible">
+            Let&apos;s Build Something <span className="accent-gradient-text italic pr-3">Together</span>
           </h2>
-          <p className="text-lg text-premium-500 max-w-lg mx-auto font-light tracking-wide">Always open to ML roles, research collaborations, or interesting problems.</p>
+          <p className="text-lg text-premium-500 max-w-lg mx-auto font-light tracking-wide">Always open to product roles, zero-to-one challenges, or interesting AI problems.</p>
         </motion.div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
           {links.map((l, i) => <ContactLink key={l.label} l={l} index={i} />)}

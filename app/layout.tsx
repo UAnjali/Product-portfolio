@@ -16,8 +16,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Dhruv Grover | ML Engineer",
-  description: "ML Engineer building production-scale AI systems.",
+  title: "Anjali Grover | Product Manager",
+  description: "AI Product Manager building scalable zero-to-one products.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
