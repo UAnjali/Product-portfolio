@@ -59,18 +59,29 @@ function ContactLink({ l, index }: { l: any; index: number }) {
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-12 md:py-16">
-      <div className="max-w-4xl mx-auto px-6 sm:px-8">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12 md:mb-16">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-semibold text-premium-900 mb-6 tracking-tight overflow-visible">
-            Let&apos;s Build Something <span className="accent-gradient-text italic pr-3">Together</span>
-          </h2>
-          <p className="text-lg text-premium-500 max-w-lg mx-auto font-light tracking-wide">Always open to product roles, zero-to-one challenges, or interesting AI problems.</p>
-        </motion.div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
-          {links.map((l, i) => <ContactLink key={l.label} l={l} index={i} />)}
-        </div>
+    <div id="contact" className="py-16 md:py-24 px-6 sm:px-12 relative overflow-hidden">
+      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
+        <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-accent mb-4">Connect</h2>
+        <h3 className="text-3xl md:text-4xl font-bold tracking-tight text-premium-900 leading-tight">Currently open <br />to initiatives.</h3>
+      </motion.div>
+      
+      <div className="grid grid-cols-1 gap-4">
+        {links.map((l, i) => (
+          <motion.a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer"
+            initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
+            transition={{ delay: i * 0.1 }}
+            className="group flex items-center gap-6 p-6 rounded-2xl bg-premium-50 border border-premium-200 hover:border-accent hover:shadow-sm transition-all duration-300"
+          >
+            <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center shrink-0 border border-premium-100 group-hover:bg-accent/5 transition-colors">
+              <l.icon size={22} className="text-premium-400 group-hover:text-accent transition-colors" strokeWidth={1.2} />
+            </div>
+            <div>
+              <p className="text-[10px] uppercase tracking-widest text-premium-400 font-bold mb-1">{l.label}</p>
+              <p className="text-base font-bold text-premium-900 group-hover:text-accent transition-colors truncate">{l.value}</p>
+            </div>
+          </motion.a>
+        ))}
       </div>
-    </section>
+    </div>
   );
 }

@@ -14,9 +14,18 @@ export default function Home() {
       <Experience />
       <Projects />
       <Skills />
-      <Education />
-      <Hobbies />
-      <Contact />
+      
+      <section className="bg-white border-t border-premium-100">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2">
+          <div className="border-b lg:border-b-0 lg:border-r border-premium-100">
+            <Education />
+          </div>
+          <div>
+            <Contact />
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </main>
   );

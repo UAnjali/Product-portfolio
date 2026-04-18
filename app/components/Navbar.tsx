@@ -7,10 +7,9 @@ import { Menu, X } from "lucide-react";
 const sections = [
   { id: "home", label: "Home" },
   { id: "experience", label: "Experience" },
-  { id: "projects", label: "Projects" },
+  { id: "shipped", label: "Shipped" },
   { id: "skills", label: "Skills" },
   { id: "education", label: "Education" },
-  { id: "hobbies", label: "Hobbies" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -36,25 +35,29 @@ export default function Navbar() {
   return (
     <>
       <motion.nav initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.5 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "glass-nav py-3" : "bg-transparent py-5"}`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-white/80 backdrop-blur-md border-b border-premium-100 py-3 shadow-sm" : "bg-transparent py-6"}`}
       >
-        <div className="max-w-6xl mx-auto px-6 sm:px-8">
-          <div className="flex items-center justify-center relative w-full">
-            <div className="hidden md:flex items-center gap-2 md:gap-4">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center">
+                <span className="text-white text-[10px] font-bold tracking-tighter">AG</span>
+              </div>
+              <span className={`text-sm font-bold tracking-tighter uppercase ${scrolled ? "text-premium-900" : "text-premium-800"}`}>Portfolio</span>
+            </div>
+
+            <div className="hidden md:flex items-center gap-1">
               {sections.map((s) => (
                 <button key={s.id} onClick={() => go(s.id)}
-                  className={`relative px-4 py-2 text-sm rounded-full transition-colors ${active === s.id ? "text-premium-900 font-medium tracking-wide" : "text-premium-500 hover:text-premium-700 tracking-wide"}`}
+                  className={`px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest rounded-lg transition-all ${active === s.id ? "text-accent bg-accent/5" : scrolled ? "text-premium-500 hover:text-premium-900" : "text-premium-600 hover:text-premium-900"}`}
                 >
-                  {active === s.id && (
-                    <motion.div layoutId="pill" className="absolute inset-0 bg-white/60 shadow-sm border border-premium-200/30 rounded-full"
-                      transition={{ type: "spring", stiffness: 400, damping: 30 }} />
-                  )}
-                  <span className="relative z-10">{s.label}</span>
+                  {s.label}
                 </button>
               ))}
             </div>
-            <button onClick={() => setOpen(!open)} className="md:hidden absolute right-0 p-2 rounded-full hover:bg-premium-100 transition-colors">
-              {open ? <X size={20} className="text-premium-600" /> : <Menu size={20} className="text-premium-600" />}
+
+            <button onClick={() => setOpen(!open)} className="md:hidden p-2 rounded-lg hover:bg-premium-100 transition-colors">
+              {open ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
