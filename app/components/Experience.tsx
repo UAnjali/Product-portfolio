@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 type Role = { title: string; period: string; bullets: string[]; tags: string[] };
 
@@ -94,6 +95,70 @@ const experiences: Exp[] = [
   },
 ];
 
+function RoleItem({ role }: { role: Role }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="relative group/role">
+      <div 
+        className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 -m-3 rounded-xl hover:bg-premium-50/50 cursor-pointer transition-all duration-300 group"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <div className="flex items-center gap-3">
+          <div className={`p-1 rounded-md transition-colors ${isOpen ? 'bg-accent/10' : 'bg-transparent group-hover:bg-premium-100'}`}>
+            {isOpen ? (
+              <ChevronUp className="text-accent w-5 h-5" />
+            ) : (
+              <ChevronDown className="text-premium-400 w-5 h-5 group-hover:text-accent" />
+            )}
+          </div>
+          <h4 className={`text-lg font-bold transition-colors ${isOpen ? 'text-accent' : 'text-premium-800'}`}>
+            {role.title}
+          </h4>
+        </div>
+        <span className="text-xs font-semibold text-premium-400 tabular-nums bg-premium-50 px-2 py-1 rounded-md border border-premium-100/50">
+          {role.period}
+        </span>
+      </div>
+      
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
+            className="overflow-hidden"
+          >
+            <ul className="grid gap-4 py-6 pl-11">
+              {role.bullets.map((b, i) => (
+                <motion.li 
+                  key={i} 
+                  initial={{ x: -10, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: i * 0.1 }}
+                  className="flex gap-4 text-sm md:text-[15px] text-premium-600 leading-relaxed font-light italic"
+                >
+                  <span className="shrink-0 mt-2.5 w-1.5 h-1.5 rounded-full bg-accent/30 ring-4 ring-accent/5" />
+                  {b}
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <div className={`flex flex-wrap gap-2 transition-all duration-300 ${isOpen ? 'pl-11' : 'pl-0 mt-3'}`}>
+        {role.tags.map((t) => (
+          <span key={t} className="px-2 py-1 text-[10px] font-bold uppercase tracking-wider rounded-md bg-premium-100/70 text-premium-500 border border-premium-200/30 backdrop-blur-sm">
+            {t}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function Item({ exp, index }: { exp: Exp; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -118,31 +183,9 @@ function Item({ exp, index }: { exp: Exp; index: number }) {
         )}
       </div>
 
-      <div className="space-y-12">
+      <div className="space-y-8 mt-8">
         {exp.roles.map((role, ri) => (
-          <div key={ri} className="relative">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
-              <h4 className="text-lg font-bold text-premium-800">{role.title}</h4>
-              <span className="text-xs font-semibold text-premium-400 tabular-nums">{role.period}</span>
-            </div>
-            
-            <ul className="grid gap-4 mb-6">
-              {role.bullets.map((b, i) => (
-                <li key={i} className="flex gap-4 text-sm md:text-[15px] text-premium-500 leading-relaxed font-light italic">
-                  <span className="shrink-0 mt-2 w-1 h-1 rounded-full bg-accent/40" />
-                  {b}
-                </li>
-              ))}
-            </ul>
-
-            <div className="flex flex-wrap gap-2">
-              {role.tags.map((t) => (
-                <span key={t} className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded bg-premium-100 text-premium-500 border border-premium-200/50">
-                  {t}
-                </span>
-              ))}
-            </div>
-          </div>
+          <RoleItem key={ri} role={role} />
         ))}
       </div>
     </motion.div>
